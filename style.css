@@ -1,6 +1,6 @@
 /* =========================================
    PRIMEPIXEL AGENCY
-   COMPLETE RESPONSIVE STYLESHEET
+   COMPLETE STYLE.CSS
 ========================================= */
 
 * {
@@ -9,15 +9,26 @@
     box-sizing: border-box;
 }
 
+:root {
+    --gold: #e4b82f;
+    --gold-light: #f3cc4b;
+    --black: #050505;
+    --dark: #0b0b0b;
+    --card: #111111;
+    --text: #f5f5f5;
+    --muted: #b7b7b7;
+    --border: rgba(228, 184, 47, 0.25);
+}
+
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 85px;
 }
 
 body {
     font-family: "Poppins", sans-serif;
-    background: #050505;
-    color: #f5f5f5;
+    background: var(--black);
+    color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -39,37 +50,12 @@ textarea {
 }
 
 /* =========================================
-   COLORS
-========================================= */
-
-:root {
-    --gold: #e4b82f;
-    --gold-light: #f0c83d;
-    --black: #050505;
-    --dark: #0b0b0b;
-    --card: #111111;
-    --border: rgba(228, 184, 47, 0.25);
-    --text: #f5f5f5;
-    --muted: #b8b8b8;
-}
-
-/* =========================================
-   GENERAL CONTAINER
-========================================= */
-
-.container {
-    width: min(1100px, 90%);
-    margin: 0 auto;
-}
-
-/* =========================================
-   HEADER / NAVBAR
+   HEADER
 ========================================= */
 
 .site-header {
     position: sticky;
     top: 0;
-    left: 0;
     width: 100%;
     z-index: 1000;
 }
@@ -78,12 +64,13 @@ textarea {
     width: 100%;
     min-height: 78px;
     padding: 10px 5%;
-    background: rgba(5, 5, 5, 0.96);
-    border-bottom: 1px solid var(--border);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    background: rgba(5, 5, 5, 0.97);
+    border-bottom: 1px solid var(--border);
 
     backdrop-filter: blur(12px);
 }
@@ -93,7 +80,7 @@ textarea {
 .brand {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-shrink: 0;
 }
 
@@ -106,12 +93,12 @@ textarea {
 
 .brand span {
     color: var(--gold);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 700;
     white-space: nowrap;
 }
 
-/* NAVIGATION */
+/* NAV LINKS */
 
 .nav-links {
     list-style: none;
@@ -122,9 +109,10 @@ textarea {
 }
 
 .nav-links a {
-    color: #eee;
+    color: #eeeeee;
     font-size: 0.85rem;
     font-weight: 500;
+
     transition: 0.3s ease;
 }
 
@@ -134,17 +122,21 @@ textarea {
 
 /* QUOTE BUTTON */
 
-.quote-btn {
+.nav-links .quote-btn {
+    display: inline-block;
+
     background: var(--gold);
-    color: #050505 !important;
-    padding: 11px 20px;
+    color: #050505;
+
+    padding: 10px 20px;
     border-radius: 30px;
-    font-weight: 700 !important;
+
+    font-weight: 700;
 }
 
-.quote-btn:hover {
+.nav-links .quote-btn:hover {
     background: var(--gold-light);
-    transform: translateY(-2px);
+    color: #050505;
 }
 
 /* HAMBURGER */
@@ -153,110 +145,19 @@ textarea {
     display: none;
 
     border: none;
+    outline: none;
+
     background: transparent;
     color: var(--gold);
 
     font-size: 2rem;
-    cursor: pointer;
-
     line-height: 1;
+
+    cursor: pointer;
 }
 
 /* =========================================
-   HERO
-========================================= */
-
-/*
-   This works if your hero section has:
-   class="hero"
-*/
-
-.hero {
-    min-height: calc(100vh - 78px);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 100px 5%;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(228, 184, 47, 0.08),
-            transparent 50%
-        ),
-        #050505;
-}
-
-.hero-content {
-    width: min(900px, 100%);
-    margin: auto;
-}
-
-.hero h1 {
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    line-height: 1.1;
-    font-weight: 800;
-    margin-bottom: 25px;
-}
-
-.hero h1 span {
-    color: var(--gold);
-}
-
-.hero p {
-    color: #bdbdbd;
-    font-size: 1.05rem;
-    margin-bottom: 35px;
-}
-
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.hero-buttons a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    min-width: 150px;
-    padding: 13px 25px;
-
-    border-radius: 30px;
-
-    font-weight: 600;
-    transition: 0.3s ease;
-}
-
-.btn-primary {
-    background: var(--gold);
-    color: #050505;
-}
-
-.btn-primary:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    color: var(--gold);
-    border: 1px solid var(--gold);
-}
-
-.btn-outline:hover {
-    background: var(--gold);
-    color: #050505;
-}
-
-/* =========================================
-   ALL SECTIONS
+   GENERAL SECTIONS
 ========================================= */
 
 section {
@@ -266,9 +167,12 @@ section {
 
 section h2 {
     text-align: center;
+
     color: var(--gold);
+
     font-size: clamp(1.8rem, 4vw, 2.6rem);
     line-height: 1.2;
+
     margin-bottom: 25px;
 }
 
@@ -277,19 +181,21 @@ section h2 {
 ========================================= */
 
 .about {
-    background: #0b0b0b;
+    background: var(--dark);
     text-align: center;
 }
 
 .about .container {
-    max-width: 850px;
+    width: min(850px, 100%);
+    margin: auto;
 }
 
 .about p {
-    max-width: 800px;
-    margin: 0 auto 22px;
     color: var(--muted);
-    font-size: 1rem;
+    font-size: 0.95rem;
+
+    max-width: 800px;
+    margin: 0 auto 20px;
 }
 
 /* =========================================
@@ -297,7 +203,7 @@ section h2 {
 ========================================= */
 
 .services {
-    background: #050505;
+    background: var(--black);
 }
 
 .service-grid {
@@ -311,12 +217,11 @@ section h2 {
 
 .card {
     background: var(--card);
+
     border: 1px solid var(--border);
     border-radius: 15px;
 
-    padding: 35px 25px;
-
-    text-align: center;
+    padding: 30px 22px;
 
     min-height: 210px;
 
@@ -324,23 +229,25 @@ section h2 {
     flex-direction: column;
     justify-content: center;
 
+    text-align: center;
+
     transition: 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-6px);
     border-color: var(--gold);
 }
 
 .card h3 {
     color: var(--gold);
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    margin-bottom: 13px;
 }
 
 .card p {
-    color: #c0c0c0;
-    font-size: 0.9rem;
+    color: var(--muted);
+    font-size: 0.85rem;
 }
 
 /* =========================================
@@ -348,17 +255,18 @@ section h2 {
 ========================================= */
 
 .portfolio {
-    background: #0b0b0b;
+    background: var(--dark);
 }
 
 .portfolio-intro {
-    max-width: 700px;
+    width: min(700px, 100%);
+
     margin: 0 auto 50px;
 
     text-align: center;
 
     color: var(--muted);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .portfolio-grid {
@@ -371,35 +279,56 @@ section h2 {
 }
 
 .portfolio-card {
-    overflow: hidden;
+    background: var(--card);
 
-    background: #111;
     border: 1px solid var(--border);
     border-radius: 15px;
+
+    overflow: hidden;
 
     transition: 0.3s ease;
 }
 
 .portfolio-card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-6px);
     border-color: var(--gold);
 }
 
-/* PORTFOLIO IMAGE */
+/* =========================================
+   PORTFOLIO IMAGES
+========================================= */
+
+/*
+   IMPORTANT:
+   Images are allowed to keep their natural
+   proportions so posters and website screenshots
+   are NOT cropped.
+*/
 
 .portfolio-card > img {
     width: 100% !important;
-    height: 300px !important;
+
+    height: auto !important;
+
+    max-height: 450px;
+
     object-fit: contain !important;
     object-position: center;
+
+    display: block !important;
+
+    padding: 10px !important;
+
     background: #080808;
-    padding: 10px;
 }
 
-/* PORTFOLIO CONTENT */
+/* =========================================
+   PORTFOLIO CONTENT
+========================================= */
 
 .portfolio-content {
-    padding: 25px 20px 30px;
+    padding: 22px 20px 28px;
+
     text-align: center;
 }
 
@@ -407,21 +336,25 @@ section h2 {
     display: block;
 
     color: var(--gold);
-    font-size: 0.75rem;
+
+    font-size: 0.72rem;
     font-weight: 600;
 
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 }
 
 .portfolio-content h3 {
     color: var(--gold);
+
     font-size: 1.05rem;
-    margin-bottom: 12px;
+
+    margin-bottom: 10px;
 }
 
 .portfolio-content p {
-    color: #bdbdbd;
-    font-size: 0.85rem;
+    color: var(--muted);
+
+    font-size: 0.82rem;
 }
 
 /* =========================================
@@ -429,7 +362,7 @@ section h2 {
 ========================================= */
 
 .why-us {
-    background: #050505;
+    background: var(--black);
 }
 
 .why-grid {
@@ -443,18 +376,19 @@ section h2 {
 
 .why-card {
     background: var(--card);
+
     border: 1px solid var(--border);
     border-radius: 15px;
 
     padding: 30px 22px;
-
-    text-align: center;
 
     min-height: 200px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    text-align: center;
 
     transition: 0.3s ease;
 }
@@ -466,13 +400,16 @@ section h2 {
 
 .why-card h3 {
     color: var(--gold);
-    margin-bottom: 14px;
+
     font-size: 1rem;
+
+    margin-bottom: 13px;
 }
 
 .why-card p {
-    color: #bdbdbd;
-    font-size: 0.85rem;
+    color: var(--muted);
+
+    font-size: 0.83rem;
 }
 
 /* =========================================
@@ -480,21 +417,23 @@ section h2 {
 ========================================= */
 
 .contact {
-    background: #0b0b0b;
+    background: var(--dark);
     text-align: center;
 }
 
 .contact > p {
     color: var(--muted);
+
     margin-bottom: 35px;
 }
 
 .contact-form {
     width: min(700px, 100%);
-    margin: 0 auto;
+    margin: auto;
 
     display: flex;
     flex-direction: column;
+
     gap: 14px;
 }
 
@@ -502,17 +441,23 @@ section h2 {
 .contact-form textarea {
     width: 100%;
 
-    padding: 15px;
-
     background: #151515;
+
     color: white;
 
     border: 1px solid var(--border);
     border-radius: 9px;
 
+    padding: 15px;
+
     outline: none;
 
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #777;
 }
 
 .contact-form input:focus,
@@ -521,20 +466,20 @@ section h2 {
 }
 
 .contact-form textarea {
-    resize: vertical;
     min-height: 150px;
+    resize: vertical;
 }
 
 .gold-btn {
     width: 100%;
-
-    padding: 15px;
 
     border: none;
     border-radius: 30px;
 
     background: var(--gold);
     color: #050505;
+
+    padding: 15px;
 
     font-weight: 700;
 
@@ -545,10 +490,9 @@ section h2 {
 
 .gold-btn:hover {
     background: var(--gold-light);
-    transform: translateY(-2px);
 }
 
-/* CONTACT INFORMATION */
+/* CONTACT INFO */
 
 .contact-info {
     margin-top: 45px;
@@ -560,8 +504,10 @@ section h2 {
 }
 
 .contact-info p {
-    color: #c0c0c0;
-    font-size: 0.9rem;
+    color: var(--muted);
+
+    font-size: 0.85rem;
+
     margin: 8px 0;
 }
 
@@ -574,9 +520,9 @@ footer {
 
     text-align: center;
 
-    padding: 65px 5% 35px;
+    padding: 60px 5% 35px;
 
-    border-top: 1px solid rgba(228, 184, 47, 0.1);
+    border-top: 1px solid rgba(228, 184, 47, 0.12);
 }
 
 footer img {
@@ -585,17 +531,17 @@ footer img {
 
     object-fit: contain;
 
-    margin: 0 auto 18px;
+    margin: 0 auto 15px;
 }
 
 footer h3 {
     color: var(--gold);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 footer p {
     color: #888;
-    font-size: 0.85rem;
+    font-size: 0.83rem;
     margin: 5px 0;
 }
 
@@ -604,14 +550,16 @@ footer p {
     justify-content: center;
     align-items: center;
 
-    gap: 20px;
+    gap: 22px;
 
     margin: 25px 0;
 }
 
 .footer-socials a {
     color: var(--gold);
-    font-size: 0.85rem;
+    font-size: 0.83rem;
+
+    transition: 0.3s ease;
 }
 
 .footer-socials a:hover {
@@ -623,7 +571,7 @@ footer p {
 }
 
 /* =========================================
-   WHATSAPP BUTTON
+   WHATSAPP
 ========================================= */
 
 .whatsapp {
@@ -706,7 +654,7 @@ footer p {
     }
 
     .nav-links {
-        gap: 15px;
+        gap: 16px;
     }
 
     .nav-links a {
@@ -724,15 +672,11 @@ footer p {
         scroll-padding-top: 75px;
     }
 
-    /* NAVBAR */
-
-    .site-header {
-        position: sticky;
-        top: 0;
-    }
+    /* HEADER */
 
     .navbar {
         min-height: 70px;
+
         padding: 8px 18px;
     }
 
@@ -741,19 +685,21 @@ footer p {
     }
 
     .brand img {
-        width: 48px;
-        height: 48px;
+        width: 47px;
+        height: 47px;
     }
 
     .brand span {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
+
+    /* HAMBURGER */
 
     .menu-toggle {
         display: block;
     }
 
-    /* MOBILE MENU */
+    /* MOBILE NAV */
 
     .nav-links {
         position: absolute;
@@ -775,7 +721,7 @@ footer p {
 
         gap: 0;
 
-        padding: 10px 20px 20px;
+        padding: 8px 18px 18px;
     }
 
     .nav-links.active {
@@ -791,46 +737,15 @@ footer p {
 
         width: 100%;
 
-        padding: 14px 10px;
-
-        font-size: 0.95rem;
-
         text-align: center;
+
+        padding: 13px 10px;
+
+        font-size: 0.9rem;
     }
 
     .nav-links .quote-btn {
-        margin-top: 8px;
-        text-align: center;
-    }
-
-    /* HERO */
-
-    .hero {
-        min-height: calc(100vh - 70px);
-
-        padding: 80px 20px;
-
-        display: flex;
-        align-items: center;
-    }
-
-    .hero h1 {
-        font-size: clamp(2.2rem, 10vw, 3.5rem);
-        line-height: 1.15;
-    }
-
-    .hero p {
-        font-size: 0.9rem;
-        line-height: 1.7;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .hero-buttons a {
-        width: min(100%, 330px);
+        margin-top: 7px;
     }
 
     /* SECTIONS */
@@ -846,44 +761,61 @@ footer p {
     /* ABOUT */
 
     .about p {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
     }
 
     /* SERVICES */
 
     .service-grid {
         grid-template-columns: 1fr;
+
         gap: 18px;
+
         margin-top: 35px;
     }
 
     .card {
         min-height: 180px;
-        padding: 30px 22px;
     }
 
     /* PORTFOLIO */
 
     .portfolio-intro {
-        font-size: 0.85rem;
+        font-size: 0.84rem;
+
         margin-bottom: 35px;
     }
 
     .portfolio-grid {
         grid-template-columns: 1fr;
+
         gap: 20px;
     }
 
+    /*
+       Natural image height on mobile.
+       Nothing gets cropped.
+    */
+
     .portfolio-card > img {
-    height: 300px !important;
-    object-fit: contain !important;
+        width: 100% !important;
+
+        height: auto !important;
+
+        max-height: none;
+
+        object-fit: contain !important;
+
+        padding: 8px !important;
     }
 
     /* WHY */
 
     .why-grid {
         grid-template-columns: 1fr;
+
         gap: 18px;
+
         margin-top: 35px;
     }
 
@@ -893,26 +825,23 @@ footer p {
 
     /* CONTACT */
 
-    .contact-form {
-        width: 100%;
-    }
-
     .contact-info p {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
     }
 
     /* FOOTER */
 
     footer {
-        padding: 55px 20px 30px;
+        padding: 50px 20px 30px;
     }
 
     .footer-socials {
         flex-direction: column;
+
         gap: 10px;
     }
 
-    /* FLOATING BUTTONS */
+    /* FLOATING BUTTON */
 
     .whatsapp {
         width: 55px;
@@ -937,30 +866,26 @@ footer p {
 
 @media (max-width: 400px) {
 
+    .navbar {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
     .brand img {
         width: 43px;
         height: 43px;
     }
 
     .brand span {
-        font-size: 0.88rem;
-    }
-
-    .hero {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .hero h1 {
-        font-size: 2.15rem;
-    }
-
-    .hero p {
-        font-size: 0.82rem;
+        font-size: 0.85rem;
     }
 
     section {
         padding-left: 15px;
         padding-right: 15px;
     }
-               }
+
+    .portfolio-card > img {
+        padding: 5px !important;
+    }
+   }
