@@ -1,51 +1,66 @@
-// ===============================
-// PRIMPIXEL AGENCY - MAIN JAVASCRIPT
-// ===============================
+// =========================================
+// PRIMEPIXEL AGENCY - MAIN JAVASCRIPT
+// =========================================
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    // ===============================
-    // MOBILE MENU
-    // ===============================
+    // =========================================
+    // MOBILE NAVIGATION
+    // =========================================
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navMenu = document.querySelector(".nav-menu");
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
 
-    if (menuToggle && navMenu) {
+    if (menuToggle && navLinks) {
 
-        menuToggle.addEventListener("click", (e) => {
-            e.stopPropagation();
+        menuToggle.addEventListener("click", function (event) {
+            event.stopPropagation();
 
-            navMenu.classList.toggle("active");
-            menuToggle.classList.toggle("active");
+            navLinks.classList.toggle("active");
 
-            // Accessibility
-            const isOpen = navMenu.classList.contains("active");
+            const isOpen = navLinks.classList.contains("active");
+
             menuToggle.setAttribute("aria-expanded", isOpen);
+
+            // Change hamburger to X
+            menuToggle.textContent = isOpen ? "✕" : "☰";
         });
 
 
-        // Close menu when a navigation link is clicked
-        const navLinks = navMenu.querySelectorAll("a");
+        // Close menu when a link is clicked
+        const links = navLinks.querySelectorAll("a");
 
-        navLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                navMenu.classList.remove("active");
+        links.forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("active");
+
                 menuToggle.classList.remove("active");
+
+                menuToggle.textContent = "☰";
+
                 menuToggle.setAttribute("aria-expanded", "false");
+
             });
+
         });
 
 
-        // Close menu when clicking outside it
-        document.addEventListener("click", (e) => {
+        // Close menu when clicking outside
+        document.addEventListener("click", function (event) {
 
             if (
-                !navMenu.contains(e.target) &&
-                !menuToggle.contains(e.target)
+                !navLinks.contains(event.target) &&
+                !menuToggle.contains(event.target)
             ) {
-                navMenu.classList.remove("active");
+
+                navLinks.classList.remove("active");
+
                 menuToggle.classList.remove("active");
+
+                menuToggle.textContent = "☰";
+
                 menuToggle.setAttribute("aria-expanded", "false");
             }
 
@@ -54,17 +69,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ===============================
-    // HEADER SCROLL EFFECT
-    // ===============================
+    // =========================================
+    // HEADER SCROLL
+    // =========================================
 
-    const header = document.querySelector("header");
+    const header = document.querySelector(".site-header");
 
     if (header) {
 
-        window.addEventListener("scroll", () => {
+        window.addEventListener("scroll", function () {
 
-            if (window.scrollY > 50) {
+            if (window.scrollY > 30) {
                 header.classList.add("scrolled");
             } else {
                 header.classList.remove("scrolled");
@@ -75,27 +90,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ===============================
-    // SMOOTH SCROLLING
-    // ===============================
+    // =========================================
+    // SMOOTH SCROLL
+    // =========================================
 
-    const smoothLinks = document.querySelectorAll('a[href^="#"]');
+    const navigationLinks =
+        document.querySelectorAll('a[href^="#"]');
 
-    smoothLinks.forEach(link => {
+    navigationLinks.forEach(function (link) {
 
-        link.addEventListener("click", function (e) {
+        link.addEventListener("click", function (event) {
 
-            const targetId = this.getAttribute("href");
+            const targetId =
+                this.getAttribute("href");
 
             if (!targetId || targetId === "#") {
                 return;
             }
 
-            const target = document.querySelector(targetId);
+            const target =
+                document.querySelector(targetId);
 
             if (target) {
 
-                e.preventDefault();
+                event.preventDefault();
 
                 target.scrollIntoView({
                     behavior: "smooth",
@@ -109,26 +127,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // ===============================
-    // BACK TO TOP BUTTON
-    // ===============================
+    // =========================================
+    // BACK TO TOP
+    // =========================================
 
-    const backToTop = document.querySelector(".back-to-top");
+    const topButton =
+        document.getElementById("topBtn");
 
-    if (backToTop) {
+    if (topButton) {
 
-        window.addEventListener("scroll", () => {
+        window.addEventListener("scroll", function () {
 
-            if (window.scrollY > 400) {
-                backToTop.classList.add("show");
+            if (window.scrollY > 500) {
+
+                topButton.classList.add("show");
+
             } else {
-                backToTop.classList.remove("show");
+
+                topButton.classList.remove("show");
+
             }
 
         });
 
 
-        backToTop.addEventListener("click", () => {
+        topButton.addEventListener("click", function () {
 
             window.scrollTo({
                 top: 0,
@@ -140,61 +163,51 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ===============================
-    // WHATSAPP BUTTON
-    // ===============================
-
-    const whatsappButtons = document.querySelectorAll(
-        ".whatsapp-button, .whatsapp-float"
-    );
-
-    whatsappButtons.forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            const phoneNumber = "2348059617565";
-
-            const message =
-                "Hello PrimePixel Agency! I would like to make an enquiry about your services.";
-
-            const whatsappURL =
-                `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-            window.open(whatsappURL, "_blank");
-
-        });
-
-    });
-
-
-    // ===============================
+    // =========================================
     // CONTACT FORM
-    // ===============================
+    // =========================================
 
-    const contactForm = document.querySelector("#contact-form");
+    const contactForm =
+        document.querySelector(".contact-form");
 
     if (contactForm) {
 
-        contactForm.addEventListener("submit", (e) => {
+        contactForm.addEventListener("submit", function (event) {
 
-            e.preventDefault();
+            event.preventDefault();
 
             const name =
-                contactForm.querySelector('[name="name"]')?.value.trim();
+                contactForm.querySelector(
+                    'input[type="text"]'
+                )?.value.trim();
 
             const email =
-                contactForm.querySelector('[name="email"]')?.value.trim();
+                contactForm.querySelector(
+                    'input[type="email"]'
+                )?.value.trim();
+
+            const inputs =
+                contactForm.querySelectorAll(
+                    'input[type="text"]'
+                );
 
             const business =
-                contactForm.querySelector('[name="business"]')?.value.trim();
+                inputs.length > 1
+                    ? inputs[1].value.trim()
+                    : "";
+
+            const textarea =
+                contactForm.querySelector("textarea");
 
             const message =
-                contactForm.querySelector('[name="message"]')?.value.trim();
+                textarea ? textarea.value.trim() : "";
 
 
             if (!name || !email || !message) {
 
-                alert("Please fill in your name, email and project details.");
+                alert(
+                    "Please fill in your name, email and project details."
+                );
 
                 return;
             }
@@ -212,34 +225,37 @@ ${message}`;
 
 
             const whatsappURL =
-                `https://wa.me/2348059617565?text=${encodeURIComponent(whatsappMessage)}`;
+                "https://wa.me/2348059617565?text=" +
+                encodeURIComponent(whatsappMessage);
 
 
-            window.open(whatsappURL, "_blank");
+            window.open(
+                whatsappURL,
+                "_blank"
+            );
 
         });
 
     }
 
 
-    // ===============================
-    // GET A QUOTE BUTTONS
-    // ===============================
+    // =========================================
+    // GET A QUOTE
+    // =========================================
 
-    const quoteButtons = document.querySelectorAll(
-        ".quote-btn, .get-quote, .hero-btn"
-    );
+    const quoteButtons =
+        document.querySelectorAll(".quote-btn");
 
-    quoteButtons.forEach(button => {
+    quoteButtons.forEach(function (button) {
 
-        button.addEventListener("click", () => {
+        button.addEventListener("click", function () {
 
-            const contactSection =
-                document.querySelector("#contact");
+            const contact =
+                document.getElementById("contact");
 
-            if (contactSection) {
+            if (contact) {
 
-                contactSection.scrollIntoView({
+                contact.scrollIntoView({
                     behavior: "smooth"
                 });
 
@@ -250,35 +266,50 @@ ${message}`;
     });
 
 
-    // ===============================
-    // VIEW PORTFOLIO BUTTON
-    // ===============================
+    // =========================================
+    // WHATSAPP BUTTON
+    // =========================================
 
-    const portfolioButtons =
-        document.querySelectorAll(".portfolio-btn");
+    const whatsappButtons =
+        document.querySelectorAll(".whatsapp");
 
-    portfolioButtons.forEach(button => {
+    whatsappButtons.forEach(function (button) {
 
-        button.addEventListener("click", () => {
+        button.addEventListener("click", function () {
 
-            const portfolio =
-                document.querySelector("#portfolio");
-
-            if (portfolio) {
-
-                portfolio.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            }
+            // Let the normal WhatsApp link work
+            return true;
 
         });
 
     });
 
 
-    // ===============================
-    // SCROLL REVEAL
-    // ===============================
+    // =========================================
+    // ESC KEY CLOSES MOBILE MENU
+    // =========================================
 
-   
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            if (navLinks && menuToggle) {
+
+                navLinks.classList.remove("active");
+
+                menuToggle.classList.remove("active");
+
+                menuToggle.textContent = "☰";
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        }
+
+    });
+
+});
