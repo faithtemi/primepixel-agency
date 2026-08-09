@@ -889,3 +889,153 @@ footer p {
         padding: 5px !important;
     }
    }
+
+
+
+/* =========================================
+   HERO / HOME
+========================================= */
+
+.hero {
+    min-height: calc(100vh - 78px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 5%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(228, 184, 47, 0.12),
+            transparent 45%
+        ),
+        #050505;
+}
+
+.hero-content {
+    width: min(900px, 100%);
+    margin: auto;
+}
+
+.hero-tagline {
+    color: var(--gold);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--gold);
+}
+
+.hero-description {
+    width: min(700px, 100%);
+
+    margin: 0 auto 35px;
+
+    color: var(--muted);
+
+    font-size: 1rem;
+}
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.hero-btn {
+    display: inline-block;
+
+    padding: 13px 28px;
+
+    border-radius: 30px;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    transition: 0.3s ease;
+}
+
+.primary-btn {
+    background: var(--gold);
+    color: #050505;
+}
+
+.primary-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+}
+
+.secondary-btn {
+    border: 1px solid var(--gold);
+    color: var(--gold);
+}
+
+.secondary-btn:hover {
+    background: var(--gold);
+    color: #050505;
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   HERO MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: calc(100vh - 70px);
+
+        padding: 80px 20px;
+    }
+
+    .hero-tagline {
+        font-size: 0.65rem;
+        letter-spacing: 2.5px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.7rem, 13vw, 4rem);
+    }
+
+    .hero-description {
+        font-size: 0.88rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .hero-btn {
+        width: min(280px, 100%);
+        text-align: center;
+    }
+       }
