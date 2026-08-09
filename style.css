@@ -1039,3 +1039,20 @@ footer p {
         text-align: center;
     }
        }
+
+
+/* =========================================
+   ABOUT SECTION - DESKTOP SPACING
+========================================= */
+
+.about {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
