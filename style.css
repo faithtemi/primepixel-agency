@@ -389,12 +389,10 @@ section h2 {
 
 .portfolio-card > img {
     width: 100% !important;
-    height: 240px !important;
-
+    height: 300px !important;
     object-fit: contain !important;
-
+    object-position: center;
     background: #080808;
-
     padding: 10px;
 }
 
@@ -877,7 +875,8 @@ footer p {
     }
 
     .portfolio-card > img {
-        height: 260px !important;
+    height: 300px !important;
+    object-fit: contain !important;
     }
 
     /* WHY */
